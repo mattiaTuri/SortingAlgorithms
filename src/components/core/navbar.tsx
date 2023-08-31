@@ -1,19 +1,30 @@
 import { useContext } from "react";
 import { ArrayContext } from "../../App";
+import Container from "../shared/Container";
+import CustomButton from "../shared/CustomButton";
 
-function Navbar(){
+function Navbar() {
+  const { array, setArray } = useContext<any>(ArrayContext);
 
-    const {array, setArray} = useContext<any>(ArrayContext);
+  const createArray = () => {
+    setArray(Array.from({ length: 20 }, () => Math.floor(Math.random() * 101)));
+  };
 
-    const createArray = () => {
-        setArray(Array.from({length:20}, () => Math.floor(Math.random()*101)))
-    }
-
-    return (
-        <div style={{height:"50px", backgroundColor:"white"}}>
-            <button onClick={() => createArray()}>Random</button>
+  return (
+    <div className="h-[100px] bg-[#262626]">
+      <Container>
+        <div className="flex items-center gap-10">
+          <h1 className="text-white">SORTING ALGORITHMS</h1>
+          <div>
+            <CustomButton
+              functionClick={() => createArray()}
+              title="RANDOM ARRAY"
+            />
+          </div>
         </div>
-    )
+      </Container>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;

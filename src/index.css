@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bangers";
+  src: url("../public/font/Bangers-Regular.ttf");
+}
+
 *{
   margin:0;
   padding:0;
@@ -5,5 +14,6 @@
 }
 
 body{
-  background-color: #282c34;
+  background-color: #262626;
+  font-family: "Bangers";
 }
