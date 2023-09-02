@@ -5,11 +5,13 @@ import CustomButton from "../shared/CustomButton";
 import { bubbleSort } from "./bubbleSortFunction";
 
 function Navbar() {
-  const { array, setArray } = useContext<any>(ArrayContext);
+  const { arrayLenght, setArray, time } = useContext<any>(ArrayContext);
 
   const createArray = () => {
-    setArray(Array.from({ length: 5 }, () => Math.floor(Math.random() * 101)));
-    document.querySelectorAll("span").forEach((elem: HTMLSpanElement) => {
+    setArray(
+      Array.from({ length: arrayLenght }, () => Math.floor(Math.random() * 101))
+    );
+    document.querySelectorAll("#container span").forEach((elem: any) => {
       elem.style.backgroundColor = "#faa916";
     });
   };
@@ -25,7 +27,7 @@ function Navbar() {
               title="RANDOM ARRAY"
             />
             <CustomButton
-              functionClick={() => bubbleSort(0)}
+              functionClick={() => bubbleSort(0, time)}
               title="BUBBLE SORT"
             />
           </div>
