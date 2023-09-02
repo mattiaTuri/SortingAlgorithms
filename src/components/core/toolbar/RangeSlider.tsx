@@ -10,19 +10,24 @@ function RangeSlider() {
   };
 
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-col md:flex-row items-center gap-4">
       <span className="text-white">Speed</span>
       <Slider
-        key={`slider-${time}`}
         id="slider-range"
+        className="md:top-3"
         aria-label="Always visible"
-        defaultValue={time}
+        defaultValue={1000}
+        value={time}
         min={200}
-        max={5000}
+        max={2000}
+        marks={[
+          { value: 200, label: 200 },
+          { value: 2000, label: 2000 },
+        ]}
         valueLabelDisplay="on"
         valueLabelFormat={() => {
           return (
-            <div className="flex flex-col items-center gap-3 bottom-[40px] bg-transparent">
+            <div className="hidden md:flex flex-col items-center gap-3 bg-transparent">
               <div className="border-2 border-[#faa916] h-[50px] w-[50px] rounded-full flex justify-center items-center">
                 <span className="text-white">{time}</span>
               </div>
@@ -35,6 +40,9 @@ function RangeSlider() {
           color: "#faa916",
           ".MuiSlider-valueLabelOpen": {
             backgroundColor: "transparent",
+          },
+          ".MuiSlider-markLabel": {
+            color: "white",
           },
         }}
         onChange={(e) => onTimeChange(e)}

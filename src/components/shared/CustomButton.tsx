@@ -1,3 +1,5 @@
+import Button from "@mui/material/Button";
+
 interface CustomButtonProps {
   functionClick: () => void;
   title: string;
@@ -5,12 +7,21 @@ interface CustomButtonProps {
 
 function CustomButton({ functionClick, title }: CustomButtonProps) {
   return (
-    <button
-      className="border border-[#faa916] text-white p-2 rounded-[4px]"
+    <Button
+      disableRipple
+      sx={{
+        border: "2px solid #faa916",
+        color: "white",
+        transitionDuration: "300ms",
+        "&:hover": {
+          backgroundColor: "#faa916",
+        },
+      }}
+      className="p-2 rounded-[4px] hover:text-[#262626]"
       onClick={functionClick}
     >
       {title}
-    </button>
+    </Button>
   );
 }
 

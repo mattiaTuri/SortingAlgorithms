@@ -5,16 +5,11 @@ import RangeSlider from "./RangeSlider";
 
 import ArrayElements from "./ArrayElements";
 import CustomButton from "../../shared/CustomButton";
+import Box from "@mui/material/Box";
 
 function Toolbar() {
   const { arrayLength, setArrayLength, array, setArray, time, setTime } =
     useContext(ArrayContext);
-
-  const onArrayLengthChange = () => {
-    setArrayLength(
-      (document.getElementById("quantity") as HTMLInputElement).value
-    );
-  };
 
   const createArray = () => {
     setArray(
@@ -26,16 +21,21 @@ function Toolbar() {
   };
 
   return (
-    <div className="h-[200px]">
+    <div className="md:h-[300px]">
       <Container>
-        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-32 md:gap-20">
-          <CustomButton
-            functionClick={() => createArray()}
-            title="RANDOM ARRAY"
-          />
-          <ArrayElements />
-          <RangeSlider />
-        </div>
+        <Box className="w-full flex flex-col items-center gap-10 p-4 border-2 border-[#faa916] rounded-[4px]">
+          <Box>
+            <h1 className="text-white text-4xl">Toolbar</h1>
+          </Box>
+          <Box className="flex flex-col md:flex-row items-center gap-10 md:gap-20">
+            <CustomButton
+              functionClick={() => createArray()}
+              title="RANDOM ARRAY"
+            />
+            <ArrayElements />
+            <RangeSlider />
+          </Box>
+        </Box>
       </Container>
     </div>
   );

@@ -1,6 +1,6 @@
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { IconButton, TextField, Tooltip, Typography } from "@mui/material";
+import { Box, IconButton, TextField, Tooltip, Typography } from "@mui/material";
 import { EventHandler, useContext } from "react";
 import { ArrayContext } from "../../../App";
 import InfoIcon from "@mui/icons-material/Info";
@@ -22,14 +22,16 @@ function ArrayElements() {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <Tooltip title="Element from 3-20">
-        <IconButton>
-          <InfoIcon className="text-[#faa916]" />
-        </IconButton>
-      </Tooltip>
-      <span className="text-white">Element of array</span>
-      <div className="flex gap-4">
+    <Box className="flex flex-col md:flex-row md:items-center gap-4">
+      <Box>
+        <Tooltip title="Element from 3-20">
+          <IconButton>
+            <InfoIcon className="text-[#faa916]" />
+          </IconButton>
+        </Tooltip>
+        <span className="text-white">Element of array</span>
+      </Box>
+      <Box className="flex justify-center items-center">
         <IconButton onClick={() => decrease()}>
           <RemoveIcon className="text-[#faa916]" />
         </IconButton>
@@ -39,7 +41,7 @@ function ArrayElements() {
           value={arrayLength}
           InputProps={{ inputProps: { min: 3, max: 20 } }}
           sx={{
-            width: "100px",
+            width: "50px",
             ".MuiInputBase-root": {
               color: "white",
               border: "2px solid #faa916",
@@ -49,8 +51,8 @@ function ArrayElements() {
         <IconButton onClick={() => increase()}>
           <AddIcon className="text-[#faa916]" />
         </IconButton>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
