@@ -18,9 +18,8 @@ body {
   font-family: "Bangers";
 }
 
-input[type="range"] {
-  accent-color: #faa916;
-  cursor: pointer;
+input, span{
+  font-family: "Bangers" !important;
 }
 
 @layer {

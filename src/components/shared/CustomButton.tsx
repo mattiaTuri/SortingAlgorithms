@@ -6,7 +6,7 @@ interface CustomButtonProps {
 function CustomButton({ functionClick, title }: CustomButtonProps) {
   return (
     <button
-      className="border border-[#faa916] text-white p-2"
+      className="border border-[#faa916] text-white p-2 rounded-[4px]"
       onClick={functionClick}
     >
       {title}

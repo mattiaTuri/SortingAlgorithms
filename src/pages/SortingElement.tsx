@@ -16,7 +16,7 @@ function SortingElement() {
               <span
                 key={index}
                 id={elem.toString()}
-                className="w-[100px] h-[100px] bg-[#faa916] border-2 border-[#262626] border-solid flex justify-center items-center duration-300 text-[30px] relative"
+                className="w-[100px] h-[100px] bg-[#faa916] border-2 border-[#262626] border-solid rounded-[4px] flex justify-center items-center duration-300 text-[30px] relative"
               >
                 {elem}
               </span>
