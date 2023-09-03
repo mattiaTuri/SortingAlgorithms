@@ -9,7 +9,7 @@ function SortingElement() {
     <Container>
       <div
         id="container"
-        className="flex justify-center items-center w-full gap-10"
+        className="flex flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"
       >
         {array == undefined ? (
           <div>
@@ -28,7 +28,7 @@ function SortingElement() {
                 component="span"
                 key={index}
                 id={elem.toString()}
-                className="w-[100px] h-[100px] bg-[#faa916] border-2 border-[#262626] border-solid rounded-[4px] flex justify-center items-center duration-300 relative"
+                className="w-[80px] h-[80px] bg-[#faa916] border-2 border-[#262626] border-solid rounded-[4px] flex justify-center items-center duration-300 relative"
                 sx={{ fontSize: 30 }}
               >
                 {elem}

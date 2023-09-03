@@ -10,7 +10,6 @@ function CustomButton({ functionClick, title, disabled }: CustomButtonProps) {
   return (
     <Button
       disableRipple
-      disabled={disabled}
       sx={{
         border: "2px solid #faa916",
         color: "white",
@@ -20,7 +19,7 @@ function CustomButton({ functionClick, title, disabled }: CustomButtonProps) {
         },
       }}
       className={`p-2 rounded-[4px] hover:text-[#262626] ${
-        disabled && "opacity-50"
+        disabled && "opacity-30 pointer-events-none"
       }`}
       onClick={functionClick}
     >

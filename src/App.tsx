@@ -13,7 +13,7 @@ function App() {
 
   return (
     <ArrayContext.Provider value={value}>
-      <div className="md:h-screen flex flex-col gap-20 md:gap-0 md:justify-between">
+      <div className="md:h-screen flex flex-col gap-20 md:justify-between">
         <Navbar />
         <Outlet />
         <Toolbar />
