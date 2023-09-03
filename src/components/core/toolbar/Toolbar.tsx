@@ -31,6 +31,7 @@ function Toolbar() {
             <CustomButton
               functionClick={() => createArray()}
               title="RANDOM ARRAY"
+              disabled={false}
             />
             <ArrayElements />
             <RangeSlider />
