@@ -10,23 +10,18 @@ export const bubbleSort = async (index: number, time: number) => {
     for (let i: number = 0; i < spanElem.length; i++) {
       if (i != spanElem.length - 1) {
         nextNumber = spanElem[i + 1];
-        updateElemPos(currentNumber, nextNumber, "0", "-100", time);
+        window.innerWidth >= 1024 ? updateElemPos(currentNumber, nextNumber, "0", "-100", time) : highlighElem(currentNumber, nextNumber, "#dc493a")      
         await delay(time);
         if (parseInt(currentNumber.id) > parseInt(nextNumber.id)) {
           const diff: number = nextNumber.offsetLeft - currentNumber.offsetLeft;
-          updateElemPos(
-            currentNumber,
-            nextNumber,
-            diff.toString(),
-            "-100",
-            time
-          );
+          window.innerWidth >= 1024 && updateElemPos(currentNumber, nextNumber, diff.toString(), "-100", time)
           await delay(time);
-          updateElemPos(currentNumber, nextNumber, diff.toString(), "0", time);
+          window.innerWidth >= 1024 && updateElemPos(currentNumber, nextNumber, diff.toString(), "0", time)
           await delay(time);
           insertElementBefore(currentNumber, nextNumber);
+          window.innerWidth < 1024 && highlighElem(currentNumber, nextNumber, "#faa916")
         } else {
-          updateElemPos(currentNumber, nextNumber, "0", "0", time);
+          window.innerWidth >= 1024 ? updateElemPos(currentNumber, nextNumber, "0", "0", time) : highlighElem(currentNumber, nextNumber, "#faa916")
           currentNumber = nextNumber;
         }
         await delay(time);
@@ -36,6 +31,12 @@ export const bubbleSort = async (index: number, time: number) => {
   }
   setColorCompleteElem(spanElem, index + 1);
 };
+
+const highlighElem = (currentNumber: HTMLSpanElement,
+  nextNumber: HTMLSpanElement, color:string) => {
+    currentNumber.style.backgroundColor = color;
+    nextNumber.style.backgroundColor = color;
+}
 
 const setColorCompleteElem = (array: HTMLSpanElement[], index: number) => {
   array
