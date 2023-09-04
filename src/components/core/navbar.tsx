@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { ArrayContext } from "../../App";
 import Container from "../shared/Container";
 import CustomButton from "../shared/CustomButton";
-import { bubbleSort } from "./bubbleSortFunction";
+import { bubbleSort } from "./bubbleSort";
+import { insertionSort } from "./insertionSort";
 
 function Navbar() {
   const { array, arrayLength, setArray, time } = useContext<any>(ArrayContext);
@@ -19,9 +20,9 @@ function Navbar() {
               disabled={array == undefined ? true : false}
             />
             <CustomButton
-              functionClick={() => console.log("Insertion sort")}
+              functionClick={() => insertionSort(time)}
               title="INSERTION SORT"
-              disabled={true}
+              disabled={array == undefined ? true : false}
             />
             <CustomButton
               functionClick={() => console.log("Selection sort")}
