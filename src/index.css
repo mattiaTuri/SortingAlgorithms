@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Bangers";
-  src: url("../public/font/Bangers-Regular.ttf");
+  font-family: "IbmPlexMone-Bold";
+  src: url("../public/font/IBMPlexMono-Bold.ttf");
+}
+
+@font-face {
+  font-family: "IbmPlexMone-Regular";
+  src: url("../public/font/IBMPlexMono-Regular.ttf");
 }
 
 * {
@@ -15,11 +20,15 @@
 
 body {
   background-color: #262626;
-  font-family: "Bangers";
+  font-family: "IbmPlexMone-Bold";
 }
 
-input, span, button{
-  font-family: "Bangers" !important;
+input, span, button, h2{
+  font-family: "IbmPlexMone-Bold" !important;
+}
+
+p{
+  font-family: "IbmPlexMone-Regular" !important;
 }
 
 @layer {

@@ -1,7 +1,7 @@
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { Box, IconButton, TextField, Tooltip, Typography } from "@mui/material";
-import { EventHandler, useContext } from "react";
+import { useContext } from "react";
 import { ArrayContext } from "../../../App";
 import InfoIcon from "@mui/icons-material/Info";
 
