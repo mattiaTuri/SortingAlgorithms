@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import { ArrayContext } from "../../../App";
 import Container from "../../shared/Container";
 import RangeSlider from "./RangeSlider";
-
 import ArrayElements from "./ArrayElements";
 import CustomButton from "../../shared/CustomButton";
 import Box from "@mui/material/Box";

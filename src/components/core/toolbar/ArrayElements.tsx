@@ -41,7 +41,7 @@ function ArrayElements() {
           value={arrayLength}
           InputProps={{ inputProps: { min: 3, max: 20 } }}
           sx={{
-            width: "50px",
+            width: "60px",
             ".MuiInputBase-root": {
               color: "white",
               border: "2px solid #faa916",
