@@ -1,4 +1,4 @@
-import { Algorithm } from "../Model/Algorithm"
+import { Algorithm } from "../model/Algorithm"
 
 export const algorithms:Algorithm[] = [
     {
@@ -8,5 +8,9 @@ export const algorithms:Algorithm[] = [
     {
         name: "Insertion Sort",
         description: "The insertion sort compares the selected element with all elements prior to its position by inserting it at the correct position and translating the major elements to the right. The first index will therefore point to the second element in the array, while the second index will start at the first."
+    },
+    {
+        name: "Selection Sort",
+        description: "At every iteration the selection sort search the minimum element of the array and once it scroll all the array put it at the its position and so on. The element positioned doesn't take compare on the next iteration. At initial iteration the first element will always considered the mininum, and therefore compare with the next. If the next is minor then this element becomes the minimun and this process will repeated until the end of array."
     }
 ]

@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { algorithms } from "../../algorithms/algorithmsExplained";
 import ModalParagraph from "./ModalParagraph";
-import { Algorithm } from "../../Model/Algorithm";
+import { Algorithm } from "../../model/Algorithm";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -31,7 +31,10 @@ function CustomModal({ openModal, clickFunction }: CustomModalProps) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className="text-white h-[700px] w-[400px] md:w-[700px]" sx={style}>
+      <Box
+        className="text-white h-[700px] w-[400px] md:w-[700px] flex flex-col gap-5"
+        sx={style}
+      >
         <Box className="flex justify-end">
           <IconButton
             onClick={clickFunction}
@@ -48,7 +51,7 @@ function CustomModal({ openModal, clickFunction }: CustomModalProps) {
             <CloseIcon className="text-white group-hover:text-[#262626] duration-300" />
           </IconButton>
         </Box>
-        <Box className="overflow-auto h-full">
+        <Box id="algorithms" className="overflow-auto h-full">
           {algorithms.map((elem: Algorithm) => {
             return (
               <ModalParagraph

@@ -7,10 +7,11 @@ import { insertionSort } from "../../algorithms/insertionSort";
 import { IconButton } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import CustomModal from "../shared/CustomModal";
+import { selectionSort } from "../../algorithms/selectionSort";
 
 function Navbar() {
   const { array, arrayLength, setArray, time } = useContext<any>(ArrayContext);
-  const [openModal, setOpenModal] = useState<boolean>(false)
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
     <div className="md:h-[100px] bg-[#262626]">
@@ -19,9 +20,15 @@ function Navbar() {
           <div className="flex items-center">
             <h1 className="text-white">SORTING ALGORITHMS</h1>
             <IconButton>
-              <InfoIcon className="text-[#faa916]" onClick={() => setOpenModal(true)}/>
+              <InfoIcon
+                className="text-[#faa916]"
+                onClick={() => setOpenModal(true)}
+              />
             </IconButton>
-            <CustomModal openModal={openModal} clickFunction={() => setOpenModal(false)}/>
+            <CustomModal
+              openModal={openModal}
+              clickFunction={() => setOpenModal(false)}
+            />
           </div>
           <div className="flex flex-wrap gap-4">
             <CustomButton
@@ -35,9 +42,9 @@ function Navbar() {
               disabled={array == undefined ? true : false}
             />
             <CustomButton
-              functionClick={() => console.log("Selection sort")}
+              functionClick={() => selectionSort(time)}
               title="SELECTION SORT"
-              disabled={true}
+              disabled={array == undefined ? true : false}
             />
             <CustomButton
               functionClick={() => console.log("Merge sort")}
