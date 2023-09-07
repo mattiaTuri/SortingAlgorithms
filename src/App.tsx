@@ -7,7 +7,7 @@ export const ArrayContext = createContext<any>([]);
 
 function App() {
   const [array, setArray] = useState<number[]>();
-  const [arrayLength, setArrayLength] = useState<number>(5);
+  const [arrayLength, setArrayLength] = useState<number>(10);
   const [time, setTime] = useState<number>(1000);
   const value = { array, setArray, arrayLength, setArrayLength, time, setTime };
 

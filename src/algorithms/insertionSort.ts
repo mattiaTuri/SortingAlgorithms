@@ -10,17 +10,17 @@ export const insertionSort = async (time: number) => {
       window.innerWidth < 1024
         ? highlighElem(currentNumber, "red")
         : updateElemPos(currentNumber, "0", "-100", "300ms");
-      let initialElementDistance: number = 0;
+      let initialElemDist: number = 0;
       while (n >= 0) {
         let prevNumber = spanElemList[n];
         await delay(time);
         if (parseInt(currentNumber.id) < parseInt(prevNumber.id)) {
-          const diff: number = currentNumber.offsetLeft - prevNumber.offsetLeft;
+          const elemDiff: number = currentNumber.offsetLeft - prevNumber.offsetLeft;
           window.innerWidth < 1024
             ? highlighElem(prevNumber, "red")
-            : updateElemPos(prevNumber, diff.toString(), "0", "300ms");
+            : updateElemPos(prevNumber, elemDiff.toString(), "0", "300ms");
           await delay(time);
-          const res = diff + initialElementDistance;
+          const res = elemDiff + initialElemDist;
           if (window.innerWidth >= 1024) {
             updateElemPos(prevNumber, "0", "0", "0ms");
             updateElemPos(currentNumber, res.toString(), "-100", "300ms");
@@ -30,7 +30,7 @@ export const insertionSort = async (time: number) => {
           prevNumber.before(currentNumber);
           spanElemList = document.querySelectorAll("#container span");
           n--;
-          initialElementDistance += diff;
+          initialElemDist += elemDiff;
         } else {
           highlighElem(prevNumber, "#20FC8F");
           break;
