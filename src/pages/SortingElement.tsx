@@ -12,7 +12,7 @@ function SortingElement() {
         className="flex flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"
       >
         {array == undefined ? (
-          <div>
+          <div className="text-center">
             <Typography
               sx={{ fontSize: 30 }}
               className="text-white"

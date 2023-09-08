@@ -4,21 +4,21 @@ import Container from "../shared/Container";
 import CustomButton from "../shared/CustomButton";
 import { bubbleSort } from "../../algorithms/bubbleSort";
 import { insertionSort } from "../../algorithms/insertionSort";
-import { IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import CustomModal from "../shared/CustomModal";
 import { selectionSort } from "../../algorithms/selectionSort";
 
 function Navbar() {
-  const { array, arrayLength, setArray, time } = useContext<any>(ArrayContext);
+  const { array, time } = useContext<any>(ArrayContext);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
-    <div className="md:h-[100px] bg-[#262626]">
+    <header className="md:h-[100px] bg-[#262626]">
       <Container>
-        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-10">
-          <div className="flex items-center">
-            <h1 className="text-white">SORTING ALGORITHMS</h1>
+        <nav className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10">
+          <Box className="flex items-center">
+            <Typography component="h1" className="text-white">SORTING ALGORITHMS</Typography>
             <IconButton>
               <InfoIcon
                 className="text-[#faa916]"
@@ -29,8 +29,8 @@ function Navbar() {
               openModal={openModal}
               clickFunction={() => setOpenModal(false)}
             />
-          </div>
-          <div className="flex flex-wrap gap-4">
+          </Box>
+          <Box className="flex flex-wrap gap-4">
             <CustomButton
               functionClick={() => bubbleSort(0, time)}
               title="BUBBLE SORT"
@@ -56,10 +56,10 @@ function Navbar() {
               title="QUICKSORT"
               disabled={true}
             />
-          </div>
-        </div>
+          </Box>
+        </nav>
       </Container>
-    </div>
+    </header>
   );
 }
 

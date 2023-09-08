@@ -23,13 +23,13 @@ function ArrayElements() {
 
   return (
     <Box className="flex flex-col md:flex-row md:items-center gap-4">
-      <Box>
+      <Box className="text-center">
         <Tooltip title="Element from 3-20">
           <IconButton>
             <InfoIcon className="text-[#faa916]" />
           </IconButton>
         </Tooltip>
-        <span className="text-white">Element of array</span>
+        <Typography component="span" sx={{fontSize: 15, color:"white"}}>Element of array</Typography>
       </Box>
       <Box className="flex justify-center items-center">
         <IconButton onClick={() => decrease()}>

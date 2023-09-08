@@ -23,7 +23,7 @@ body {
   font-family: "IbmPlexMone-Bold";
 }
 
-input, span, button, h2{
+input, span, button, h2, h1{
   font-family: "IbmPlexMone-Bold" !important;
 }
 
@@ -31,10 +31,12 @@ p{
   font-family: "IbmPlexMone-Regular" !important;
 }
 
+/*Hide scrollbar on Chrome, Safari, and Opera */
 #algorithms::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
+  display: none; 
 }
 
+/*Hide scrollbar on firefox*/
 #algorithms{
   scrollbar-width: none;
 }
