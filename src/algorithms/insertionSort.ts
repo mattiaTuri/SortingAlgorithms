@@ -1,3 +1,5 @@
+import { delay, updateElemPos } from "./sharedFunctions";
+
 export const insertionSort = async (time: number) => {
   let spanElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span");
@@ -57,22 +59,6 @@ export const insertionSort = async (time: number) => {
     .forEach((elem: any) => (elem.style.backgroundColor = "#20FC8F"));
 };
 
-const updateElemPos = (
-  number: HTMLSpanElement,
-  x: string,
-  y: string,
-  time: string
-) => {
-  number.style.transitionDuration = time;
-  number.style.transform = `translate(${x}px, ${y}px)`;
-};
-
 const highlighElem = (currentNumber: HTMLSpanElement, color: string) => {
   currentNumber.style.backgroundColor = color;
-};
-
-const delay = (delayTime: number) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delayTime);
-  });
 };

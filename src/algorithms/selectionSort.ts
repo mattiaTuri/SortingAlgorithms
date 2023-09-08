@@ -1,3 +1,5 @@
+import { delay, updateElemPos } from "./sharedFunctions";
+
 export const selectionSort = async (time:number) => {
     let spanElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span");
@@ -21,10 +23,8 @@ export const selectionSort = async (time:number) => {
         }
         await delay(time)
 
-        const parentElement = document.getElementById("container")!
         if(window.innerWidth > 1024){
-            minNumber.style.transitionDuration = "300ms"
-            minNumber.style.transform = "translate(0, -100px)"
+            updateElemPos(minNumber, "0", "-100", "300ms")
             await delay(time)
             let spanElem: HTMLSpanElement[] = Array.from(spanElemList);
             let minNumberIndex: number = spanElem.indexOf(minNumber) - 1
@@ -33,20 +33,20 @@ export const selectionSort = async (time:number) => {
                 const elem = spanElemList[i]
                 const elemDiff:number = minNumber.offsetLeft - elem.offsetLeft
                 const res = elemDiff + initialElemDist
-                elem.style.transitionDuration = "300ms"
-                elem.style.transform = `translate(${elemDiff.toString()}px, 0)`
+                updateElemPos(elem, elemDiff.toString(), "0", "300ms")
                 await delay(time);
-                elem.style.transitionDuration = "0ms"
-                elem.style.transform = "translate(0, 0)"
-                minNumber.style.transform = `translate(${res.toString()}px, -100px)`
+                updateElemPos(elem, "0", "0", "0ms")
+                updateElemPos(minNumber, res.toString(), "-100", "0ms")
                 elem.before(minNumber);
                 initialElemDist += elemDiff
-                await delay(time)
             }
-            minNumber.style.transitionDuration = "300ms"
-            minNumber.style.transform = `translate(0px, -100px)`
             await delay(time)
-            minNumber.style.transform = `translate(0px, 0px)`
+            updateElemPos(minNumber, "0", "-100", "300ms")
+            await delay(time)
+            updateElemPos(minNumber, "0", "0", "300ms")
+        }else{
+            const container = document.getElementById("container")
+            container?.insertBefore(minNumber, container.childNodes[i])
         }
         minNumber.style.backgroundColor = "#20FC8F"
         spanElemList = document.querySelectorAll("#container span");
@@ -55,9 +55,3 @@ export const selectionSort = async (time:number) => {
     }
 }
 
-const delay = (delayTime: number) => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, delayTime);
-    });
-  };
-  
