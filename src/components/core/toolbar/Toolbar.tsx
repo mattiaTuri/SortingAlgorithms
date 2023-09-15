@@ -13,7 +13,7 @@ function Toolbar() {
 
   const createArray = () => {
     setArray(
-      Array.from({ length: arrayLength }, () => Math.floor(Math.random() * 101))
+      Array.from({ length: arrayLength }, () => Math.floor(Math.random() * 11))
     );
     document.querySelectorAll("#container span").forEach((elem: any) => {
       elem.style.backgroundColor = "#faa916";

@@ -8,6 +8,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import CustomModal from "../shared/CustomModal";
 import { selectionSort } from "../../algorithms/selectionSort";
+import { countingSort } from "../../algorithms/countingSort";
 
 function Navbar() {
   const { array, time } = useContext<any>(ArrayContext);
@@ -54,6 +55,11 @@ function Navbar() {
             <CustomButton
               functionClick={() => console.log("Quicksort")}
               title="QUICKSORT"
+              disabled={true}
+            />
+            <CustomButton
+              functionClick={() => countingSort(time)}
+              title="COUNTING SORT"
               disabled={true}
             />
           </Box>
