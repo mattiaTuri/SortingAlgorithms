@@ -19,7 +19,9 @@ function Navbar() {
       <Container>
         <nav className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-10">
           <Box className="flex items-center">
-            <Typography component="h1" className="text-white">SORTING ALGORITHMS</Typography>
+            <Typography component="h1" className="text-white">
+              SORTING ALGORITHMS
+            </Typography>
             <IconButton>
               <InfoIcon
                 className="text-[#faa916]"
