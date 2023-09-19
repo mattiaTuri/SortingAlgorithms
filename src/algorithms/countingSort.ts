@@ -7,13 +7,14 @@ export const countingSort = async (time: number) => {
     let originalElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span")
     let originalElem: HTMLSpanElement[] = Array.from(originalElemList)
+    const p = originalElem[0]
     const distanceElem = spanElem[1].offsetLeft - spanElem[0].offsetLeft
     const elemCountingList = await createCounterValues(spanElem)
     await delay(time)
     await countingElements(spanElem, time, elemCountingList)
     await delay(time)
     //document.querySelectorAll("#counting div")?.forEach(div => document.getElementById("counting")?.removeChild(div))
-    sortElement(originalElem, spanElem, time)
+    sortElement(p, distanceElem, spanElem, time)
 }
 
 //Creo una copia dei valori
@@ -72,29 +73,32 @@ const countingElements = async (spanElem: HTMLSpanElement[], time:number, elemCo
     }
 }
 
-const sortElement = async (originalElem:any[], spanElem:any[], time:number) => {
+const sortElement = async (originalElem:any, initialDistance:number, spanElem:any[], time:number) => {
     let sortedElemt = spanElem.sort((a:any, b:any) => a.id-b.id)
-
-    for(let i = 0; i< sortedElemt.length; i++){
-        if(i==0){
-            document.getElementById("container")?.insertBefore(sortedElemt[i], originalElem[i])
-        }else{
-            //sortedElemt[i].style.transform = sortedElemt[i].style.transform
-            sortedElemt[i-1].after(sortedElemt[i])
-        }
-        await delay(time)
+    let distanceElem = 0
+    for(let i = 0; i< sortedElemt.length; i++){   
+        const xDiff = originalElem.offsetLeft - sortedElemt[i].offsetLeft
+        const yDiff = originalElem.offsetTop - sortedElemt[i].offsetTop
+        //xDiff = xDiff + distanceElem    
         sortedElemt[i].style.transitionDuration = "300ms"
-        sortedElemt[i].style.transform = "translate(0px,0px)"
+        sortedElemt[i].style.transform = `translate(${xDiff + distanceElem}px,${yDiff}px)`
         await delay(time)
+
+        distanceElem = distanceElem + initialDistance
+
+        // sortedElemt[i].style.transform = `translate(-${p.x}px, 0px)`
+        // sortedElemt[i].style.transitionDuration = "300ms"
+        // sortedElemt[i].style.transform = "initial" 
+        // sortedElemt[i].style.transitionDuration = "0s"
+        // originalElem[i].style.transform = "initial"
+        // document.getElementById("container")?.insertBefore(sortedElemt[i], originalElem[i])
+        // sortedElemt[i].style.transform = "translate(0px,0px)" 
+        // sortedElemt[i].style.transitionDuration = "300ms"
+        // await delay(time)
+
+        // let originalElemList: NodeListOf<HTMLSpanElement> = document.querySelectorAll("#container span")
+        // originalElem = Array.from(originalElemList)
     }
 
-    // sortedElemt.forEach(async (currentElement, index) => {
-    //     currentElement.style.transform = originalElem[index].style.transform
-    //     document.getElementById("container")?.appendChild(currentElement)
-    //     currentElement.style.transitionDuration = "300ms"
-    //     currentElement.style.transform = "translate(0,0)"
-    //     await delay(time)
-    // })
-    console.log(originalElem)
 }
         
