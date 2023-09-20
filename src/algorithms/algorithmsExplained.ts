@@ -12,5 +12,9 @@ export const algorithms:Algorithm[] = [
     {
         name: "Selection Sort",
         description: "At every iteration the selection sort search the minimum element of the array and once it scroll all the array put it at the its position and so on. The element positioned doesn't take compare on the next iteration. At initial iteration the first element will always considered the mininum, and therefore compare with the next. If the next is minor then this element becomes the minimun and this process will repeated until the end of array."
+    },
+    {
+        name: "Counting Sort",
+        description: "The algorithm begins by creating a copy of each element in ascending order. The second step is to move each element into its copy by incrementing a counter that determines how many elements are in that group.In the last step, starting with the first group, the elements are taken one by one: all elements in group 0 are moved to their final position, then elements in group 1 and so on to the end."
     }
 ]
