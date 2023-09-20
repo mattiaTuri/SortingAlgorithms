@@ -38,8 +38,10 @@ function SortingElement() {
             })
           )}
         </div>
-        <div id="counting" className="flex flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"></div>
-        <div id="incrementCounter" className="flex flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"></div>
+        <div
+          id="counting"
+          className="hidden flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"
+        ></div>
       </div>
     </Container>
   );

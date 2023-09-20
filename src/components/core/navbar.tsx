@@ -62,7 +62,9 @@ function Navbar() {
             <CustomButton
               functionClick={() => countingSort(time)}
               title="COUNTING SORT"
-              disabled={array == undefined ? true : false}
+              disabled={
+                array == undefined || window.innerWidth <= 1024 ? true : false
+              }
             />
           </Box>
         </nav>
