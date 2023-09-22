@@ -25,7 +25,7 @@ export const selectionSort = async (time:number) => {
         await delay(time)
 
         if(window.innerWidth > 1024){
-            updateElemPos(minNumber, "0", "-100", "300ms")
+            updateElemPos(minNumber, "0", "-150", "300ms")
             await delay(time)
             let spanElem: HTMLSpanElement[] = Array.from(spanElemList);
             let minNumberIndex: number = spanElem.indexOf(minNumber) - 1
@@ -37,12 +37,12 @@ export const selectionSort = async (time:number) => {
                 updateElemPos(elem, elemDiff.toString(), "0", "300ms")
                 await delay(time);
                 updateElemPos(elem, "0", "0", "0ms")
-                updateElemPos(minNumber, res.toString(), "-100", "0ms")
+                updateElemPos(minNumber, res.toString(), "-150", "0ms")
                 elem.before(minNumber);
                 initialElemDist += elemDiff
             }
             await delay(time)
-            updateElemPos(minNumber, "0", "-100", "300ms")
+            updateElemPos(minNumber, "0", "-150", "300ms")
             await delay(time)
             updateElemPos(minNumber, "0", "0", "300ms")
         }else{

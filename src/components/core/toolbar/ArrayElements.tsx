@@ -10,7 +10,7 @@ function ArrayElements() {
     useContext(ArrayContext);
 
   const increase = () => {
-    if (arrayLength != 20) {
+    if (arrayLength != 12) {
       setArrayLength(arrayLength + 1);
     }
   };
@@ -39,7 +39,7 @@ function ArrayElements() {
           id="outlined-basic"
           variant="outlined"
           value={arrayLength}
-          InputProps={{ inputProps: { min: 3, max: 20 } }}
+          InputProps={{ inputProps: { min: 3, max: 12 } }}
           sx={{
             width: "60px",
             ".MuiInputBase-root": {

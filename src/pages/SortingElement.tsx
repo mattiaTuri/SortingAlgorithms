@@ -10,7 +10,7 @@ function SortingElement() {
       <div className="w-full flex flex-col justify-center gap-20">
         <div
           id="container"
-          className="flex flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"
+          className="flex lg:flex-nowrap justify-center items-center w-full gap-4"
         >
           {array == undefined ? (
             <div className="text-center">
@@ -25,22 +25,20 @@ function SortingElement() {
           ) : (
             array.map((elem: number, index: number) => {
               return (
-                <Typography
-                  component="span"
+                <span
                   key={index}
                   id={elem.toString()}
-                  className="w-[80px] h-[80px] bg-[#faa916] border-2 border-[#262626] border-solid rounded-[4px] flex justify-center items-center duration-300 relative"
-                  sx={{ fontSize: 30 }}
+                  className="w-[30px] h-[30px] md:h-[50px] md:w-[50px]  lg:h-[80px] lg:w-[80px] bg-[#faa916] border-2 border-[#262626] border-solid rounded-[4px] flex justify-center items-center duration-300 relative text-sm lg:text-3xl"
                 >
                   {elem}
-                </Typography>
+                </span>
               );
             })
           )}
         </div>
         <div
           id="counting"
-          className="hidden flex-wrap lg:flex-nowrap justify-center items-center w-full gap-4"
+          className="hidden justify-center items-center w-full gap-4"
         ></div>
       </div>
     </Container>

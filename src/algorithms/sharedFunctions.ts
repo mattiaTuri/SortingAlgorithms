@@ -5,7 +5,7 @@ export const updateElemPos = (
     time: string
   ) => {
     number.style.transitionDuration = time;
-    number.style.transform = `translate(${x}px, ${y}px)`;
+    number.style.transform = `translate(${x}px, ${y}%)`;
   };
 
   export const highlighElem = (elem: HTMLSpanElement, color: string) => {

@@ -1,4 +1,4 @@
-import { delay, disableButtons } from "./sharedFunctions";
+import { delay, disableButtons, highlighElem } from "./sharedFunctions";
 
 export const bubbleSort = async (index: number, time: number) => {
   disableButtons(true, "0.3")
@@ -13,18 +13,23 @@ export const bubbleSort = async (index: number, time: number) => {
     for (let i: number = 0; i < spanElem.length; i++) {
       if (i != spanElem.length - 1) {
         nextNumber = spanElem[i + 1];
-        window.innerWidth >= 1024 ? updateElemPos(currentNumber, nextNumber, "0", "-100", time) : highlighElem(currentNumber, nextNumber, "#dc493a")      
+        highlighElem(currentNumber, "#FF3C38") 
+        highlighElem(nextNumber, "#FF3C38")   
+        updateElemPos(currentNumber, nextNumber, "0", "-150", time)   
         await delay(time);
         if (parseInt(currentNumber.id) > parseInt(nextNumber.id)) {
           const diff: number = nextNumber.offsetLeft - currentNumber.offsetLeft;
-          window.innerWidth >= 1024 && updateElemPos(currentNumber, nextNumber, diff.toString(), "-100", time)
+          updateElemPos(currentNumber, nextNumber, diff.toString(), "-150", time)
           await delay(time);
-          window.innerWidth >= 1024 && updateElemPos(currentNumber, nextNumber, diff.toString(), "0", time)
+          updateElemPos(currentNumber, nextNumber, diff.toString(), "0", time)
           await delay(time);
+          highlighElem(currentNumber, "#faa916") 
+          highlighElem(nextNumber, "#faa916")   
           insertElementBefore(currentNumber, nextNumber);
-          window.innerWidth < 1024 && highlighElem(currentNumber, nextNumber, "#faa916")
         } else {
-          window.innerWidth >= 1024 ? updateElemPos(currentNumber, nextNumber, "0", "0", time) : highlighElem(currentNumber, nextNumber, "#faa916")
+          highlighElem(currentNumber, "#faa916") 
+          highlighElem(nextNumber, "#faa916")   
+          updateElemPos(currentNumber, nextNumber, "0", "0", time)
           currentNumber = nextNumber;
         }
       }
@@ -35,12 +40,6 @@ export const bubbleSort = async (index: number, time: number) => {
   setColorCompleteElem(spanElem, index + 1);
   disableButtons(false, "1")
 };
-
-const highlighElem = (currentNumber: HTMLSpanElement,
-  nextNumber: HTMLSpanElement, color:string) => {
-    currentNumber.style.backgroundColor = color;
-    nextNumber.style.backgroundColor = color;
-}
 
 const setColorCompleteElem = (array: HTMLSpanElement[], index: number) => {
   array
@@ -57,9 +56,9 @@ const updateElemPos = (
   y: string,
   time: number
 ) => {
-  currentNumber.style.transform = `translate(${x}px, ${y}px)`;
+  currentNumber.style.transform = `translate(${x}px, ${y}%)`;
   currentNumber.style.transitionDuration = `${time - 100}ms`;
-  nextNumber.style.transform = `translate(-${x}px, ${y}px)`;
+  nextNumber.style.transform = `translate(-${x}px, ${y}%)`;
   nextNumber.style.transitionDuration = `${time - 100}ms`;
 };
 

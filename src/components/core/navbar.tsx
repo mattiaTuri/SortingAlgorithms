@@ -63,7 +63,7 @@ function Navbar() {
               functionClick={() => countingSort(time)}
               title="COUNTING SORT"
               disabled={
-                array == undefined || window.innerWidth <= 1024 ? true : false
+                array == undefined ? true : false
               }
             />
           </Box>
