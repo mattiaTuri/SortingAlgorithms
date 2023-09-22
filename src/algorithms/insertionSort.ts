@@ -1,6 +1,7 @@
-import { delay, updateElemPos } from "./sharedFunctions";
+import { delay, disableButtons, highlighElem, updateElemPos } from "./sharedFunctions";
 
 export const insertionSort = async (time: number) => {
+  disableButtons(true, "0.3")
   let spanElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span");
 
@@ -9,9 +10,12 @@ export const insertionSort = async (time: number) => {
       let currentNumber = spanElemList[i];
       if (currentNumber == undefined) break;
       let n = j;
-      window.innerWidth < 1024
-        ? highlighElem(currentNumber, "red")
-        : updateElemPos(currentNumber, "0", "-100", "300ms");
+      if(window.innerWidth < 1024){
+        highlighElem(currentNumber, "#FF3C38")
+      }else{ 
+        highlighElem(currentNumber, "#EF476F")
+        updateElemPos(currentNumber, "0", "-100", "200ms");
+      }
       let initialElemDist: number = 0;
       while (n >= 0) {
         let prevNumber = spanElemList[n];
@@ -20,12 +24,12 @@ export const insertionSort = async (time: number) => {
           const elemDiff: number = currentNumber.offsetLeft - prevNumber.offsetLeft;
           window.innerWidth < 1024
             ? highlighElem(prevNumber, "red")
-            : updateElemPos(prevNumber, elemDiff.toString(), "0", "300ms");
+            : updateElemPos(prevNumber, elemDiff.toString(), "0", "200ms");
           await delay(time);
           const res = elemDiff + initialElemDist;
           if (window.innerWidth >= 1024) {
             updateElemPos(prevNumber, "0", "0", "0ms");
-            updateElemPos(currentNumber, res.toString(), "-100", "300ms");
+            updateElemPos(currentNumber, res.toString(), "-100", "200ms");
           } else {
             highlighElem(prevNumber, "#faa916");
           }
@@ -42,9 +46,9 @@ export const insertionSort = async (time: number) => {
       await delay(time);
 
       if (window.innerWidth >= 1024) {
-        updateElemPos(currentNumber, "0", "-100", "300ms");
+        updateElemPos(currentNumber, "0", "-100", "200ms");
         await delay(time);
-        updateElemPos(currentNumber, "0", "0", "300ms");
+        updateElemPos(currentNumber, "0", "0", "200ms");
         highlighElem(currentNumber, "#20FC8F");
       } else {
         highlighElem(currentNumber, "#faa916");
@@ -57,8 +61,7 @@ export const insertionSort = async (time: number) => {
   document
     .querySelectorAll("#container span")
     .forEach((elem: any) => (elem.style.backgroundColor = "#20FC8F"));
+
+    disableButtons(false, "1")
 };
 
-const highlighElem = (currentNumber: HTMLSpanElement, color: string) => {
-  currentNumber.style.backgroundColor = color;
-};

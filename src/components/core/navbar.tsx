@@ -11,9 +11,9 @@ import { selectionSort } from "../../algorithms/selectionSort";
 import { countingSort } from "../../algorithms/countingSort";
 
 function Navbar() {
-  const { array, time } = useContext<any>(ArrayContext);
+  const { array, time, isSortActive, setIsSortActive } = useContext<any>(ArrayContext);
   const [openModal, setOpenModal] = useState<boolean>(false);
-
+  
   return (
     <header className="md:h-[100px] bg-[#262626]">
       <Container>

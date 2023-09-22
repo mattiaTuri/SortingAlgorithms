@@ -1,4 +1,7 @@
+import { delay, disableButtons } from "./sharedFunctions";
+
 export const bubbleSort = async (index: number, time: number) => {
+  disableButtons(true, "0.3")
   let spanElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span");
   let spanElem: HTMLSpanElement[] = Array.from(spanElemList);
@@ -24,12 +27,13 @@ export const bubbleSort = async (index: number, time: number) => {
           window.innerWidth >= 1024 ? updateElemPos(currentNumber, nextNumber, "0", "0", time) : highlighElem(currentNumber, nextNumber, "#faa916")
           currentNumber = nextNumber;
         }
-        await delay(time);
       }
+      await delay(time);
     }
     await bubbleSort(index + 1, time);
   }
   setColorCompleteElem(spanElem, index + 1);
+  disableButtons(false, "1")
 };
 
 const highlighElem = (currentNumber: HTMLSpanElement,
@@ -67,10 +71,4 @@ const insertElementBefore = async (
   currentNumber.style.transitionDuration = "0s";
   nextNumber.style.transform = `initial`;
   document.getElementById("container")?.insertBefore(nextNumber, currentNumber);
-};
-
-const delay = (delayTime: number) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delayTime);
-  });
 };

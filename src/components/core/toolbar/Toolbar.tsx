@@ -8,10 +8,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 function Toolbar() {
-  const { arrayLength, setArrayLength, array, setArray, time, setTime } =
-    useContext(ArrayContext);
+  const { arrayLength, setArray, isSortActive } = useContext(ArrayContext);
 
   const createArray = () => {
+    document.querySelectorAll("#container span").forEach((elem: any) => {
+      elem.style.transitionDuration = "0ms"
+      elem.style.transform = "translate(0px, 0px)"
+    });
     setArray(
       Array.from({ length: arrayLength }, () => Math.floor(Math.random() * 11))
     );
@@ -31,7 +34,7 @@ function Toolbar() {
             <CustomButton
               functionClick={() => createArray()}
               title="RANDOM ARRAY"
-              disabled={false}
+              disabled={isSortActive ? true : false}
             />
             <ArrayElements />
             <RangeSlider />

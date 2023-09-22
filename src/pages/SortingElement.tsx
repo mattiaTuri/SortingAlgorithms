@@ -4,7 +4,7 @@ import Container from "../components/shared/Container";
 import { Typography } from "@mui/material";
 
 function SortingElement() {
-  const { array, setArray } = useContext<any>(ArrayContext);
+  const { array } = useContext<any>(ArrayContext);
   return (
     <Container>
       <div className="w-full flex flex-col justify-center gap-20">

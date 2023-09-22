@@ -8,9 +8,21 @@ export const updateElemPos = (
     number.style.transform = `translate(${x}px, ${y}px)`;
   };
 
+  export const highlighElem = (elem: HTMLSpanElement, color: string) => {
+    elem.style.backgroundColor = color;
+  }
+
   export const delay = (delayTime: number) => {
     return new Promise((resolve) => {
       setTimeout(resolve, delayTime);
     });
   };
+
+  export const disableButtons = (val:boolean, opacity:string) => [
+    document.querySelectorAll("button").forEach((button) => {
+      button.disabled = val;
+      button.style.opacity = opacity
+    })
+  ]
+  
   

@@ -1,6 +1,7 @@
-import { delay } from "./sharedFunctions";
+import { delay, disableButtons } from "./sharedFunctions";
 
 export const countingSort = async (time: number) => {
+    disableButtons(true, "0.3")
     let spanElemList: NodeListOf<HTMLSpanElement> =
     document.querySelectorAll("#container span")
     let spanElements: HTMLSpanElement[] = Array.from(spanElemList)
@@ -16,17 +17,18 @@ export const countingSort = async (time: number) => {
     await sortElement(firstElem, distanceElem, spanElements, time)
     await delay(time)
     clearCountingChild()
+    disableButtons(false, "1")
 }
 
 //Create copy of the values
-const createCounterValues = async (arr:HTMLSpanElement[]) => {
+const createCounterValues = async (spanElements:HTMLSpanElement[]) => {
 
     //Array without duplicate values
     let elemCountingList:HTMLSpanElement[] = [] 
 
-    for(let i = 0; i < arr.length; i++){
-        const checkElm = elemCountingList.find((elem:any) => elem.id == arr[i].id) 
-        if(!checkElm) elemCountingList.push(arr[i])     
+    for(let i = 0; i < spanElements.length; i++){
+        const checkElem = elemCountingList.find((elem:any) => elem.id == spanElements[i].id) 
+        if(!checkElem) elemCountingList.push(spanElements[i])     
     }    
 
     //Sort values
@@ -47,11 +49,11 @@ const createCounterValues = async (arr:HTMLSpanElement[]) => {
 }
 
 //Count elements moving them to the right position
-const countingElements = async (spanElem: HTMLSpanElement[], time:number) => {
+const countingElements = async (spanElements: HTMLSpanElement[], time:number) => {
     let divElemList: NodeListOf<HTMLDivElement> = document.querySelectorAll("#counting div");
     let divElem: HTMLDivElement[] = Array.from(divElemList);
-    for(let i = 0; i < spanElem.length; i++){
-        const span = spanElem[i]
+    for(let i = 0; i < spanElements.length; i++){
+        const span = spanElements[i]
         for(let j = 0; j < divElem.length; j++){
             const div = divElem[j]
             if(span.id == div.getAttribute("data-id")){
@@ -70,8 +72,8 @@ const countingElements = async (spanElem: HTMLSpanElement[], time:number) => {
 }
 
 //Finally sort elements
-const sortElement = async (firstElem:HTMLSpanElement, initialDistance:number, spanElem:HTMLSpanElement[], time:number) => {
-    let sortedElem = spanElem.sort((a:HTMLSpanElement, b:HTMLSpanElement) => parseInt(a.id)- parseInt(b.id))
+const sortElement = async (firstElem:HTMLSpanElement, initialDistance:number, spanElements:HTMLSpanElement[], time:number) => {
+    let sortedElem = spanElements.sort((a:HTMLSpanElement, b:HTMLSpanElement) => parseInt(a.id)- parseInt(b.id))
     let distanceElem = 0
     for(let i = 0; i < sortedElem.length; i++){   
         const currentElem = sortedElem[i]
@@ -90,10 +92,11 @@ const sortElement = async (firstElem:HTMLSpanElement, initialDistance:number, sp
 }
 
 const clearCountingChild = () => {
-    const countingContainer:HTMLDivElement = document.querySelector("#counting")!
-    countingContainer.childNodes.forEach((child) => {
+    document.querySelectorAll("#counting div").forEach((child) => {
+        console.log(child)
         child.remove()
     })
-    countingContainer.style.display = "none"
+
+    document.getElementById("counting")!.style.display = "none"
 }
         

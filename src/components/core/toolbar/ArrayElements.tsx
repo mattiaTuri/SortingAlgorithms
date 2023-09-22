@@ -6,7 +6,7 @@ import { ArrayContext } from "../../../App";
 import InfoIcon from "@mui/icons-material/Info";
 
 function ArrayElements() {
-  const { arrayLength, setArrayLength, time, setTime } =
+  const { arrayLength, setArrayLength } =
     useContext(ArrayContext);
 
   const increase = () => {
