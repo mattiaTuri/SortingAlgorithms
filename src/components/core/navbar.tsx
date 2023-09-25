@@ -50,16 +50,6 @@ function Navbar() {
               disabled={array == undefined ? true : false}
             />
             <CustomButton
-              functionClick={() => console.log("Merge sort")}
-              title="MERGE SORT"
-              disabled={true}
-            />
-            <CustomButton
-              functionClick={() => console.log("Quicksort")}
-              title="QUICKSORT"
-              disabled={true}
-            />
-            <CustomButton
               functionClick={() => countingSort(time)}
               title="COUNTING SORT"
               disabled={
