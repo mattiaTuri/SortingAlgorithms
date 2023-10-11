@@ -24,31 +24,27 @@ export const selectionSort = async (time:number) => {
         }
         await delay(time)
 
-        if(window.innerWidth > 1024){
-            updateElemPos(minNumber, "0", "-150", "300ms")
-            await delay(time)
-            let spanElem: HTMLSpanElement[] = Array.from(spanElemList);
-            let minNumberIndex: number = spanElem.indexOf(minNumber) - 1
-            let initialElemDist: number = 0;
-            for(let i:number = minNumberIndex; i >= posIndex - 1; i--){
-                const elem = spanElemList[i]
-                const elemDiff:number = minNumber.offsetLeft - elem.offsetLeft
-                const res = elemDiff + initialElemDist
-                updateElemPos(elem, elemDiff.toString(), "0", "300ms")
-                await delay(time);
-                updateElemPos(elem, "0", "0", "0ms")
-                updateElemPos(minNumber, res.toString(), "-150", "0ms")
-                elem.before(minNumber);
-                initialElemDist += elemDiff
-            }
-            await delay(time)
-            updateElemPos(minNumber, "0", "-150", "300ms")
-            await delay(time)
-            updateElemPos(minNumber, "0", "0", "300ms")
-        }else{
-            const container = document.getElementById("container")
-            container?.insertBefore(minNumber, container.childNodes[i])
+        updateElemPos(minNumber, "0", "-150", "300ms")
+        await delay(time)
+        let spanElem: HTMLSpanElement[] = Array.from(spanElemList);
+        let minNumberIndex: number = spanElem.indexOf(minNumber) - 1
+        let initialElemDist: number = 0;
+        for(let i:number = minNumberIndex; i >= posIndex - 1; i--){
+            const elem = spanElemList[i]
+            const elemDiff:number = minNumber.offsetLeft - elem.offsetLeft
+            const res = elemDiff + initialElemDist
+            updateElemPos(elem, elemDiff.toString(), "0", "300ms")
+            await delay(time);
+            updateElemPos(elem, "0", "0", "0ms")
+            updateElemPos(minNumber, res.toString(), "-150", "0ms")
+            elem.before(minNumber);
+            initialElemDist += elemDiff
         }
+        await delay(time)
+        updateElemPos(minNumber, "0", "-150", "300ms")
+        await delay(time)
+        updateElemPos(minNumber, "0", "0", "300ms")
+        
         highlighElem(minNumber, "#20FC8F")
         spanElemList = document.querySelectorAll("#container span");
         posIndex++;
