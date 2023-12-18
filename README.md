@@ -30,23 +30,26 @@ The sorting bubble scrolls the list proggressively and compares two items at a t
 
 The insertion sort compares the selected element with all elements prior to its position by inserting it at the correct position and translating the major elements to the right. The first index will therefore point to the second element in the array, while the second index will start at the first.
 
-![bubble-sort](./public/assets/insertion.sort.gif)
+![insertion-sort](./public/assets/insertion-sort.gif)
 
 ##### `SELECTION SORT`
 
 At every iteration the selection sort search the minimum element of the array and once it scroll all the array put it at the its position and so on. The element positioned doesn't take compare on the next iteration. At initial iteration the first element will always considered the mininum, and therefore compare with the next. If the next is minor then this element becomes the minimun and this process will repeated until the end of array.
 
-![bubble-sort](./public/assets/selection-sort.gif)
+![selection-sort](./public/assets/selection-sort.gif)
 
 ##### `COUNTING SORT`
 
-STEP I
+#### STEP I
+
 In first step the algorithm calculate the count of all the elements of the initial input. Then create a copy of each element in ascending order in a new array
 
-STEP II
+#### STEP II
+
 The second step is to move each element into its copy by incrementing a counter that determines how many elements are in that group.
 
-STEP III
+#### STEP III
+
 In the last step, starting with the first group, the elements are taken one by one: all elements in group 0 are moved to their final position, then elements in group 1 and so on to the end.
 
 ## Technologies Used
