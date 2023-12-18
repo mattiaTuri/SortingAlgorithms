@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Sorting algorithms visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Description](#description)
+- [Sorting Algorithms](#sorting-algorithms)
+- [Technologies Used](#technologies-used)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+The project is a visualizer of the main sorting algorithms: bubble, insertion, selection and counting. on the page there is a brief description of how each algorithm works. The page contains a toolbar with which you can:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- create an array
+- decide the length of the array (3-12)
+- choose the speed of the animation (200ms - 2000ms)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##### Live project
 
-### `npm test`
+https://sorting-algorithms-five.vercel.app/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Sorting Algorithms
 
-### `npm run build`
+##### `BUBBLE SORT`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The sorting bubble scrolls the list proggressively and compares two items at a time by swapping their positions if the second item is less than the first. In doing so, at the first iteration the maximum number will be in the last position, which will also be the final position. At the second iteration, the second maximum will be in the second-to-last position. The algorithm continues in this way until it has compared every single element in the array. At each iteration each element will thus be at its final position.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![bubble-sort](./public/assets/bubble-sort.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### `INSERTION SORT`
 
-### `npm run eject`
+The insertion sort compares the selected element with all elements prior to its position by inserting it at the correct position and translating the major elements to the right. The first index will therefore point to the second element in the array, while the second index will start at the first.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![bubble-sort](./public/assets/insertion.sort.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### `SELECTION SORT`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+At every iteration the selection sort search the minimum element of the array and once it scroll all the array put it at the its position and so on. The element positioned doesn't take compare on the next iteration. At initial iteration the first element will always considered the mininum, and therefore compare with the next. If the next is minor then this element becomes the minimun and this process will repeated until the end of array.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![bubble-sort](./public/assets/selection-sort.gif)
 
-## Learn More
+##### `COUNTING SORT`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+STEP I
+In first step the algorithm calculate the count of all the elements of the initial input. Then create a copy of each element in ascending order in a new array
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+STEP II
+The second step is to move each element into its copy by incrementing a counter that determines how many elements are in that group.
+
+STEP III
+In the last step, starting with the first group, the elements are taken one by one: all elements in group 0 are moved to their final position, then elements in group 1 and so on to the end.
+
+## Technologies Used
+
+This app is made by React v18.2 with TypeScript and Tailwind in combination with MUI.
+
+All the animations are made by Javascript.
