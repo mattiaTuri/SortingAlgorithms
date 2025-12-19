@@ -34,14 +34,7 @@ function App() {
   }, []);
 
   const createArray = () => {
-    document.querySelectorAll("#container span").forEach((elem: any) => {
-      elem.style.transitionDuration = "0ms";
-      elem.style.transform = "translate(0px, 0px)";
-    });
     setArray(Array.from({ length: toolbarRef.current.arrayLength }, () => Math.floor(Math.random() * 11)));
-    document.querySelectorAll("#container span").forEach((elem: any) => {
-      elem.style.backgroundColor = "#faa916";
-    });
   };
 
   return (
