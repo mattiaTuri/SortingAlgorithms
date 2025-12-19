@@ -1,17 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/core/navbar";
 import { createContext, useEffect, useRef, useState } from "react";
-import Toolbar from "./components/core/toolbar/Toolbar";
 import GUI from "lil-gui";
 
 export const ArrayContext = createContext<any>([]);
 
 function App() {
-  const [array, setArray] = useState<number[]>();
+  const [array, setArray] = useState<number[]>([]);
   const [arrayLength, setArrayLength] = useState<number>(10);
   const [speed, setSpeed] = useState<number>(1000);
   const properties = { array, setArray, arrayLength, setArrayLength, speed, setSpeed };
-  const toolbarRef = useRef({ arrayLength: 1, speed: 1000, createArray: () => createArray() });
+  const toolbarRef = useRef({ arrayLength: 10, speed: 1000, createArray: () => createArray() });
 
   useEffect(() => {
     const gui = new GUI();
@@ -28,7 +27,7 @@ function App() {
       .min(100)
       .max(2000)
       .onChange((speed: number) => setSpeed(speed));
-    gui.add(toolbarRef.current, "createArray");
+    gui.add(toolbarRef.current, "createArray").name("Create New Array");
     return () => {
       gui.destroy();
     };
@@ -39,7 +38,7 @@ function App() {
       elem.style.transitionDuration = "0ms";
       elem.style.transform = "translate(0px, 0px)";
     });
-    setArray(Array.from({ length: arrayLength }, () => Math.floor(Math.random() * 11)));
+    setArray(Array.from({ length: toolbarRef.current.arrayLength }, () => Math.floor(Math.random() * 11)));
     document.querySelectorAll("#container span").forEach((elem: any) => {
       elem.style.backgroundColor = "#faa916";
     });

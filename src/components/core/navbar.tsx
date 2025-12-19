@@ -11,7 +11,7 @@ import { selectionSort } from "../../algorithms/selectionSort";
 import { countingSort } from "../../algorithms/countingSort";
 
 function Navbar() {
-  const { array, speed, isSortActive, setIsSortActive } = useContext<any>(ArrayContext);
+  const { array, speed } = useContext<any>(ArrayContext);
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   return (
@@ -28,10 +28,10 @@ function Navbar() {
             <CustomModal openModal={openModal} clickFunction={() => setOpenModal(false)} />
           </Box>
           <Box className="flex flex-wrap gap-4">
-            <CustomButton functionClick={() => bubbleSort(0, speed)} title="BUBBLE SORT" disabled={array == undefined ? true : false} />
-            <CustomButton functionClick={() => insertionSort(speed)} title="INSERTION SORT" disabled={array == undefined ? true : false} />
-            <CustomButton functionClick={() => selectionSort(speed)} title="SELECTION SORT" disabled={array == undefined ? true : false} />
-            <CustomButton functionClick={() => countingSort(speed)} title="COUNTING SORT" disabled={array == undefined ? true : false} />
+            <CustomButton functionClick={() => bubbleSort(0, speed)} title="BUBBLE SORT" disabled={array.length === 0 ? true : false} />
+            <CustomButton functionClick={() => insertionSort(speed)} title="INSERTION SORT" disabled={array.length === 0 ? true : false} />
+            <CustomButton functionClick={() => selectionSort(speed)} title="SELECTION SORT" disabled={array.length === 0 ? true : false} />
+            <CustomButton functionClick={() => countingSort(speed)} title="COUNTING SORT" disabled={array.length === 0 ? true : false} />
           </Box>
         </nav>
       </Container>

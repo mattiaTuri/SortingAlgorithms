@@ -1,16 +1,15 @@
 import { delay, disableButtons, highlighElem, updateElemPos } from "./sharedFunctions";
 
 export const insertionSort = async (time: number) => {
-  disableButtons(true, "0.3")
-  let spanElemList: NodeListOf<HTMLSpanElement> =
-    document.querySelectorAll("#container span");
+  disableButtons(true, "0.3");
+  let spanElemList: NodeListOf<HTMLSpanElement> = document.querySelectorAll("#container span");
 
   for (let i: number = 1; i < spanElemList.length; i++) {
     for (let j: number = 0; j < spanElemList.length; j++) {
       let currentNumber = spanElemList[i];
-      if (currentNumber == undefined) break;
+      if (currentNumber === undefined) break;
       let n = j;
-      highlighElem(currentNumber, "#EF476F")
+      highlighElem(currentNumber, "#EF476F");
       updateElemPos(currentNumber, "0", "-150", "200ms");
       let initialElemDist: number = 0;
       while (n >= 0) {
@@ -44,10 +43,7 @@ export const insertionSort = async (time: number) => {
     break;
   }
 
-  document
-    .querySelectorAll("#container span")
-    .forEach((elem: any) => (elem.style.backgroundColor = "#20FC8F"));
+  document.querySelectorAll("#container span").forEach((elem: any) => (elem.style.backgroundColor = "#20FC8F"));
 
-    disableButtons(false, "1")
+  disableButtons(false, "1");
 };
-
