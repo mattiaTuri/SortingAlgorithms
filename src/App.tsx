@@ -27,7 +27,7 @@ function App() {
       .min(100)
       .max(2000)
       .onChange((speed: number) => setSpeed(speed));
-    gui.add(toolbarRef.current, "createArray").name("Create New Array");
+    gui.add(toolbarRef.current, "createArray").name("Create random array");
     return () => {
       gui.destroy();
     };

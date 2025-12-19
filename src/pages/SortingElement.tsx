@@ -8,17 +8,10 @@ function SortingElement() {
   return (
     <Container>
       <div className="w-full flex flex-col justify-center gap-20">
-        <div
-          id="container"
-          className="flex lg:flex-nowrap justify-center items-center w-full gap-4"
-        >
-          {array == undefined ? (
+        <div id="container" className="flex lg:flex-nowrap justify-center items-center w-full gap-4">
+          {array.length === 0 ? (
             <div className="text-center">
-              <Typography
-                sx={{ fontSize: 30 }}
-                className="text-white"
-                component="span"
-              >
+              <Typography sx={{ fontSize: 30 }} className="text-white" component="span">
                 Create your array
               </Typography>
             </div>
@@ -36,10 +29,7 @@ function SortingElement() {
             })
           )}
         </div>
-        <div
-          id="counting"
-          className="hidden justify-center items-center w-full gap-4"
-        ></div>
+        <div id="counting" className="hidden justify-center items-center w-full gap-4"></div>
       </div>
     </Container>
   );
